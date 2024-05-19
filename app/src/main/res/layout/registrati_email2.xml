@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_background">
+
+
+    <!-- Top bar with back arrow and title -->
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:backgroundTint="@color/blue"
+        android:theme="?attr/actionBarTheme"
+        android:contentInsetStart="0dp"
+        android:contentInsetLeft="0dp"
+        android:contentInsetEnd="0dp"
+        android:contentInsetRight="0dp"
+        android:layout_alignParentTop="true"
+        android:id="@+id/toolbar">
+
+        <!-- Back arrow -->
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/arrow_back"
+            android:id="@+id/backButton"/>
+
+        <!-- Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:text="Registrati"
+            android:layout_margin="16dp"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:id="@+id/toolbarTitle"/>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:padding="16dp"
+        android:layout_marginTop="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity = "center"
+        android:orientation = "vertical">
+
+        <ImageView
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:src="@drawable/logo_png"/>
+
+        <!-- Nome EditText -->
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Nome*"
+            android:inputType="text"
+            android:id="@+id/editTextNome"/>
+
+        <!-- Cognome EditText -->
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editTextNome"
+            android:layout_marginTop="8dp"
+            android:hint="Cognome*"
+            android:inputType="text"
+            android:id="@+id/editTextCognome"/>
+
+        <!-- Numero di telefono EditText -->
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editTextEmail"
+            android:layout_marginTop="8dp"
+            android:hint="Numero di telefono*"
+            android:inputType="phone"
+            android:id="@+id/editTextTelefono"/>
+
+        <!-- Email EditText -->
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editTextCognome"
+            android:layout_marginTop="8dp"
+            android:hint="Email*"
+            android:inputType="textEmailAddress"
+            android:id="@+id/editTextEmail"/>
+
+        <!-- Password EditText -->
+        <EditText
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editTextTelefono"
+            android:layout_marginTop="8dp"
+            android:hint="Password*"
+            android:inputType="textPassword"
+            android:id="@+id/editTextPassword"/>
+
+        <!-- Conferma password EditText -->
+        <EditText
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editTextPassword"
+            android:layout_marginTop="8dp"
+            android:hint="Conferma password*"
+            android:inputType="textPassword"
+            android:id="@+id/editTextConfermaPassword"/>
+
+        <!-- Continua Button -->
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Continua"
+            android:backgroundTint="@color/blue"
+            android:padding="18dp"
+            android:layout_marginTop="32dp"
+            android:textSize = "20sp"
+            android:layout_below="@id/editTextConfermaPassword"/>
+
+    </LinearLayout>>
+
+
+</RelativeLayout>
