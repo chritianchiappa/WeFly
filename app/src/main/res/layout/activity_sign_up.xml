@@ -72,7 +72,7 @@
 
             <!-- Nome EditText -->
             <EditText
-                android:id="@+id/edit_nome"
+                android:id="@+id/editTextNome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -81,7 +81,7 @@
 
             <!-- Cognome EditText -->
             <EditText
-                android:id="@+id/edit_cognome"
+                android:id="@+id/editTextCognome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/editTextNome"
@@ -91,7 +91,7 @@
 
             <!-- Numero di telefono EditText -->
             <EditText
-                android:id="@+id/edit_telefono"
+                android:id="@+id/editTextTelefono"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/editTextEmail"
@@ -101,7 +101,7 @@
 
             <!-- Email EditText -->
             <EditText
-                android:id="@+id/edit_email"
+                android:id="@+id/editTextEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/editTextCognome"
@@ -111,7 +111,7 @@
 
             <!-- Password EditText -->
             <EditText
-                android:id="@+id/edit_password"
+                android:id="@+id/editTextPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/editTextTelefono"

@@ -48,7 +48,7 @@
                 android:layout_height="100dp"/>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/registrati_email_btn"
+                android:id="@+id/accedi_email_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Registrati"

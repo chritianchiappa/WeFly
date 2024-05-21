@@ -18,13 +18,13 @@
             android:id = "@+id/cardView"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            app:cordCornerRadius = "100dp"
+            app:cornerRadius = "100dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/logoIv"
+                android:id="@+id/title_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/logo_png"
@@ -33,7 +33,7 @@
         </androidx.cardview.widget.CardView>
 
         <TextView
-            android:id="@+id/titleTv"
+            android:id="@+id/tvHeading"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="Language"

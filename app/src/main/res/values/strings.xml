@@ -4,4 +4,8 @@
     <string name="crea_viaggio">Crea viaggio</string>
     <string name="chat">Chat</string>
     <string name="profilo">Profilo</string>
+
+    <string name="prova1">TESTO 1</string>
+    <string name="prova2">TESTO 2</string>
+    <string name="prova3">TESTO 3</string>
 </resources>

@@ -22,8 +22,7 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         auth = Firebase.auth
-
-        binding.registratiEmailBtn.setOnClickListener {
+        binding.accediEmailBtn.setOnClickListener {
             startActivity(Intent(this, SignInActivity::class.java))
             finish()
         }

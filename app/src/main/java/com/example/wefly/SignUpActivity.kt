@@ -26,7 +26,7 @@ class SignUpActivity : AppCompatActivity() {
         auth = Firebase.auth
 3
         binding.registratiBtn.setOnClickListener{
-            auth.createUserWithEmailAndPassword(binding.editEmail.text.toString(),binding.editPassword.text.toString())
+            auth.createUserWithEmailAndPassword(binding.editTextEmail.text.toString(),binding.editTextPassword.text.toString())
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information

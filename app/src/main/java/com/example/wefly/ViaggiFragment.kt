@@ -6,13 +6,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import java.util.Locale
 
 
 class ViaggiFragment : Fragment() {
+    private lateinit var adapter : MyAdapter
     private lateinit var recyclerView: RecyclerView
-    private lateinit var searchView: SearchView
+    private lateinit var newsArrayList : ArrayList<News>
+
+    lateinit var imageId : Array<Int>
+    lateinit var heading : Array<String>
+    lateinit var news : Array<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,19 +36,39 @@ class ViaggiFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        // Initialize views here
+        dataInitialize()
+        val layoutManager = LinearLayoutManager(context)
         recyclerView = view.findViewById(R.id.recyclerView)
-        searchView = view.findViewById(R.id.searchView)
-
-        // Setup RecyclerView
+        recyclerView.layoutManager = layoutManager
         recyclerView.setHasFixedSize(true)
-        recyclerView.layoutManager = LinearLayoutManager(context) // Use context or requireContext()
-
-        addDataToList()
+        recyclerView.adapter = adapter
     }
 
-    private fun addDataToList() {
-        // Your code to add data to the list
+    private fun dataInitialize() {
+        newsArrayList = arrayListOf<News>()
+
+        imageId = arrayOf(
+            R.drawable.logo_png,
+            R.drawable.google_icon,
+            R.drawable.facebook_icon
+        )
+
+        heading = arrayOf(
+            getString(R.string.prova1),
+            getString(R.string.prova2),
+            getString(R.string.prova3)
+        )
+
+        news = arrayOf(
+            getString(R.string.prova1),
+            getString(R.string.prova2),
+            getString(R.string.prova3)
+        )
+
+        for (i in imageId.indices) {
+            val news = News(imageId[i], heading[i])
+            newsArrayList.add(news)
+        }
+
     }
 }

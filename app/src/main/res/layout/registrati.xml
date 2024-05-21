@@ -48,10 +48,10 @@
                 android:layout_height="100dp"/>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/registrati_email_btn"
+                android:id="@+id/Accedi_email_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Registrati"
+                android:text="Accedi"
                 android:textColor="@color/black"
                 android:backgroundTint="@color/white"
                 app:strokeWidth="1dp"
