@@ -62,7 +62,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.SearchView
-                android:id="@+id/search_view"
+                android:id="@+id/searchView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:queryHint="Cerca qui"
@@ -71,6 +71,15 @@
 
         </com.google.android.material.card.MaterialCardView>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id = "@+id/recyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf = "parent"
+            app:layout_comstraintEnd_toEndOf = "parent"
+            app:layout_comstraintHorizontal_bias = "0.5"
+            app:layout_comstraintStart_toStartOf = "parent"
+            app:layout_comstraintTop_toBottomOf = "@id/materialCardView"/>
 
     </LinearLayout>
 
