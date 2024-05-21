@@ -1,9 +1,7 @@
 <resources>
     <string name="app_name">WeFly</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="viaggi">Viaggi</string>
-    <string name="crea_viaggio">Crea Viaggio</string>
+    <string name="crea_viaggio">Crea viaggio</string>
     <string name="chat">Chat</string>
     <string name="profilo">Profilo</string>
 </resources>

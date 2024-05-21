@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "705583664973",
+    "project_id": "wefly-d50f7",
+    "storage_bucket": "wefly-d50f7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:705583664973:android:07474cd0eea44284c2f104",
+        "android_client_info": {
+          "package_name": "com.example.wefly"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_vzsOhQT-FCv88toovYzw1qBQrdJQp5o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

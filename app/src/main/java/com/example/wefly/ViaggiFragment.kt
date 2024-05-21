@@ -30,18 +30,6 @@ class ViaggiFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Initialize views here
-        recyclerView = view.findViewById(R.id.recyclerView)
-        searchView = view.findViewById(R.id.searchView)
-
-        // Setup RecyclerView
-        recyclerView.setHasFixedSize(true)
-        recyclerView.layoutManager = LinearLayoutManager(context) // Use context or requireContext()
-
-        addDataToList()
     }
 
-    private fun addDataToList() {
-        // Your code to add data to the list
-    }
 }
