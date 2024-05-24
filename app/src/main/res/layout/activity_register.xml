@@ -95,6 +95,27 @@
                 android:textSize="18dp"
                 android:drawableLeft="@drawable/facebook_icon"/>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hai già un account?"
+                    android:textColor="@color/black"/>
+                <TextView
+                    android:id="@+id/accedi_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Accedi"
+                    android:textColor="@color/red"
+                    android:layout_marginLeft = "5dp"/>
+            </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="50dp"/>

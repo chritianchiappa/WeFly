@@ -8,4 +8,6 @@
     <string name="prova1">TESTO 1</string>
     <string name="prova2">TESTO 2</string>
     <string name="prova3">TESTO 3</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
