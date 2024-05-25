@@ -49,6 +49,9 @@ class ChatFragment : Fragment() {
     }
 
     private fun dataInitialize(){
+
+        chatArrayList = arrayListOf<DataChat>()
+
         imageId = arrayOf(
             R.drawable.profile_icon
         )

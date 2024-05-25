@@ -50,29 +50,59 @@ class ViaggiFragment : Fragment() {
     }
 
     private fun dataInitialize(){
+
+        viaggiArrayList = arrayListOf<DataElencoViaggi>()
+
         imageId = arrayOf(
+            R.drawable.background_travel,
+            R.drawable.background_travel,
+            R.drawable.background_travel,
             R.drawable.background_travel
         )
 
         titoloViaggio = arrayOf (
+            "Londra",
+            "Londra",
+            "Londra",
+            "Londra",
+            "Londra",
+            "Londra",
             "Londra"
         )
 
         data = arrayOf(
+            "20/03/2022",
+            "20/03/2022",
+            "20/03/2022",
+            "20/03/2022",
+            "20/03/2022",
+            "20/03/2022",
             "20/03/2022"
         )
 
         partecipanti = arrayOf (
+            "4/6",
+            "4/6",
+            "4/6",
+            "4/6",
+            "4/6",
+            "4/6",
             "4/6"
         )
 
         viaggi = arrayOf(
-            "Viaggio 1"
+            "Viaggio 1",
+            "Viaggio 2",
+            "Viaggio 3",
+            "Viaggio 4",
+            "Viaggio 5",
+            "Viaggio 6",
+            "Viaggio 7"
         )
 
         for (i in imageId.indices){
 
-            val viaggi = DataElencoViaggi(imageId[i], titoloViaggio[i], data[i],partecipanti[i])
+            val viaggi = DataElencoViaggi(imageId[i], titoloViaggio[i], data[i], partecipanti[i])
             viaggiArrayList.add(viaggi)
         }
 

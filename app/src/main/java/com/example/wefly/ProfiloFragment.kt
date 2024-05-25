@@ -50,6 +50,7 @@ class ProfiloFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         dataInitializeAttuali()
+        dataInitializePassati()
         val layoutManagerAttuali = LinearLayoutManager(context)
         recyclerViewAttuali = view.findViewById(R.id.recyclerViewViaggiAttuali)
         recyclerViewAttuali.layoutManager = layoutManagerAttuali
@@ -57,7 +58,7 @@ class ProfiloFragment : Fragment() {
         adapterAttuali = AdapterViaggiAttuali(viaggiAttualiArrayList)
         recyclerViewAttuali.adapter = adapterAttuali
 
-        dataInitializeAttuali()
+
         val layoutManagerPassati = LinearLayoutManager(context)
         recyclerViewPassati = view.findViewById(R.id.recyclerViewViaggiPassati)
         recyclerViewPassati.layoutManager = layoutManagerPassati
@@ -67,16 +68,25 @@ class ProfiloFragment : Fragment() {
     }
 
     private fun dataInitializeAttuali(){
+
+        viaggiAttualiArrayList = arrayListOf<DataViaggiAttuali>()
+
         imageIdAttuali = arrayOf(
+            R.drawable.background_travel,
+            R.drawable.background_travel,
             R.drawable.background_travel
         )
 
         titoloViaggioAttuali = arrayOf (
+            "Londra",
+            "Londra",
             "Londra"
         )
 
         viaggiAttuali = arrayOf(
-            "Viaggio 1"
+            "Viaggio 1",
+            "Viaggio 2",
+            "Viaggio 3"
         )
 
         for (i in imageIdAttuali.indices){
@@ -88,16 +98,35 @@ class ProfiloFragment : Fragment() {
     }
 
     private fun dataInitializePassati(){
+
+        viaggiPassatiArrayList = arrayListOf<DataViaggiPassati>()
+
         imageIdPassati = arrayOf(
+            R.drawable.background_travel,
+            R.drawable.background_travel,
+            R.drawable.background_travel,
             R.drawable.background_travel
         )
 
         titoloViaggioPassati = arrayOf (
+            "Londra",
+            "Londra",
+            "Londra",
             "Londra"
         )
 
+        dataPassati = arrayOf(
+            "10/10/2020",
+            "10/10/2020",
+            "10/10/2020",
+            "10/10/2020"
+        )
+
         viaggiPassati = arrayOf(
-            "Viaggio 1"
+            "Viaggio 1",
+            "Viaggio 2",
+            "Viaggio 3",
+            "Viaggio 4"
         )
 
         for (i in imageIdPassati.indices){
