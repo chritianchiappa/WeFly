@@ -75,13 +75,12 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_main_activity)
         navView.setupWithNavController(navController)
 
-        replaceFragment(ViaggiFragment())
+        // replaceFragment(ViaggiFragment())
     }
-    private fun replaceFragment(homeFragment: Fragment){
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragment_viaggi_layout, homeFragment)
-        fragmentTransaction.commit()
-    }
+    // private fun replaceFragment(viaggiFragment: Fragment){
+    //     val fragmentManager = supportFragmentManager
+    //     val fragmentTransaction = fragmentManager.beginTransaction()
+    //     fragmentTransaction.replace(R.id.fragment_viaggi_layout, viaggiFragment)
+    //     fragmentTransaction.commit()
+    // }
 }
-
