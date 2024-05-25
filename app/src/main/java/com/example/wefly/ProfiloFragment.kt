@@ -5,10 +5,32 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 
 class ProfiloFragment : Fragment() {
-    // TODO: Rename and change types of parameters
+    // dichiarazione variables per Viaggi attuali
+
+    private lateinit var adapterAttuali : AdapterViaggiAttuali // dichiarazione dell'adapter
+    private lateinit var recyclerViewAttuali : RecyclerView // dichiarazione della recyclerView
+    private lateinit var viaggiAttualiArrayList : ArrayList<DataViaggiAttuali> // ArrayList di objects
+
+    lateinit var imageIdAttuali : Array<Int>
+    lateinit var titoloViaggioAttuali : Array<String>
+    lateinit var viaggiAttuali : Array<String>
+
+
+    // dichiarazione variables per Viaggi passati
+
+    private lateinit var adapterPassati : AdapterViaggiPassati // dichiarazione dell'adapter
+    private lateinit var recyclerViewPassati : RecyclerView // dichiarazione della recyclerView
+    private lateinit var viaggiPassatiArrayList : ArrayList<DataViaggiPassati> // ArrayList di objects
+
+    lateinit var imageIdPassati : Array<Int>
+    lateinit var titoloViaggioPassati : Array<String>
+    lateinit var dataPassati : Array<String>
+    lateinit var viaggiPassati : Array<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +45,67 @@ class ProfiloFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_profilo, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        dataInitializeAttuali()
+        val layoutManagerAttuali = LinearLayoutManager(context)
+        recyclerViewAttuali = view.findViewById(R.id.recyclerViewViaggiAttuali)
+        recyclerViewAttuali.layoutManager = layoutManagerAttuali
+        recyclerViewAttuali.setHasFixedSize(true)
+        adapterAttuali = AdapterViaggiAttuali(viaggiAttualiArrayList)
+        recyclerViewAttuali.adapter = adapterAttuali
+
+        dataInitializeAttuali()
+        val layoutManagerPassati = LinearLayoutManager(context)
+        recyclerViewPassati = view.findViewById(R.id.recyclerViewViaggiPassati)
+        recyclerViewPassati.layoutManager = layoutManagerPassati
+        recyclerViewPassati.setHasFixedSize(true)
+        adapterPassati = AdapterViaggiPassati(viaggiPassatiArrayList)
+        recyclerViewPassati.adapter = adapterPassati
+    }
+
+    private fun dataInitializeAttuali(){
+        imageIdAttuali = arrayOf(
+            R.drawable.background_travel
+        )
+
+        titoloViaggioAttuali = arrayOf (
+            "Londra"
+        )
+
+        viaggiAttuali = arrayOf(
+            "Viaggio 1"
+        )
+
+        for (i in imageIdAttuali.indices){
+
+            val viaggiAttuali = DataViaggiAttuali(imageIdAttuali[i], titoloViaggioAttuali[i])
+            viaggiAttualiArrayList.add(viaggiAttuali)
+        }
+
+    }
+
+    private fun dataInitializePassati(){
+        imageIdPassati = arrayOf(
+            R.drawable.background_travel
+        )
+
+        titoloViaggioPassati = arrayOf (
+            "Londra"
+        )
+
+        viaggiPassati = arrayOf(
+            "Viaggio 1"
+        )
+
+        for (i in imageIdPassati.indices){
+
+            val viaggiPassati = DataViaggiPassati(imageIdPassati[i], titoloViaggioPassati[i], dataPassati[i])
+            viaggiPassatiArrayList.add(viaggiPassati)
+        }
+
     }
 
 }

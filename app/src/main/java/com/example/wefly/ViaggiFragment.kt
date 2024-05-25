@@ -13,24 +13,28 @@ import java.util.Locale
 
 
 class ViaggiFragment : Fragment() {
-    private lateinit var adapter : MyAdapter
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var newsArrayList : ArrayList<News>
+
+    // dichiarazione variables
+
+    private lateinit var adapter : AdapterElencoViaggi // dichiarazione dell'adapter
+    private lateinit var recyclerView : RecyclerView // dichiarazione della recyclerView
+    private lateinit var viaggiArrayList : ArrayList<DataElencoViaggi> // ArrayList di objects
 
     lateinit var imageId : Array<Int>
-    lateinit var heading : Array<String>
-    lateinit var news : Array<String>
+    lateinit var titoloViaggio : Array<String>
+    lateinit var data : Array<String>
+    lateinit var partecipanti : Array<String>
+    lateinit var viaggi : Array<String>
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Initial setup that doesn't require view references can go here
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_viaggi, container, false)
     }
 
@@ -41,34 +45,38 @@ class ViaggiFragment : Fragment() {
         recyclerView = view.findViewById(R.id.recyclerView)
         recyclerView.layoutManager = layoutManager
         recyclerView.setHasFixedSize(true)
+        adapter = AdapterElencoViaggi(viaggiArrayList)
         recyclerView.adapter = adapter
     }
 
-    private fun dataInitialize() {
-        newsArrayList = arrayListOf<News>()
-
+    private fun dataInitialize(){
         imageId = arrayOf(
-            R.drawable.logo_png,
-            R.drawable.google_icon,
-            R.drawable.facebook_icon
+            R.drawable.background_travel
         )
 
-        heading = arrayOf(
-            getString(R.string.prova1),
-            getString(R.string.prova2),
-            getString(R.string.prova3)
+        titoloViaggio = arrayOf (
+            "Londra"
         )
 
-        news = arrayOf(
-            getString(R.string.prova1),
-            getString(R.string.prova2),
-            getString(R.string.prova3)
+        data = arrayOf(
+            "20/03/2022"
         )
 
-        for (i in imageId.indices) {
-            val news = News(imageId[i], heading[i])
-            newsArrayList.add(news)
+        partecipanti = arrayOf (
+            "4/6"
+        )
+
+        viaggi = arrayOf(
+            "Viaggio 1"
+        )
+
+        for (i in imageId.indices){
+
+            val viaggi = DataElencoViaggi(imageId[i], titoloViaggio[i], data[i],partecipanti[i])
+            viaggiArrayList.add(viaggi)
         }
 
     }
+
+
 }

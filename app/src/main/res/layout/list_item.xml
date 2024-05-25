@@ -53,6 +53,7 @@
                 app:cardElevation="18dp">
 
                 <TextView
+                    android:id="@+id/titolo_viaggio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Maldive"
