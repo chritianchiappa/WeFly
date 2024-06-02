@@ -52,7 +52,8 @@
                     android:layout_height="30dp"
                     android:src = "@drawable/arrow_back"
                     android:layout_gravity="center"
-                    app:tint="@color/blue"/>
+                    app:tint="@color/blue"
+                    android:clickable="true"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -134,10 +135,10 @@
                 android:layout_height="10dp"/>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/registrati_btn"
+                android:id="@+id/continua_btn"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:text="Registrati"
+                android:text="Continua"
                 app:cornerRadius="28dp"
                 android:backgroundTint="@color/blue"
                 android:alpha="0.7"/>

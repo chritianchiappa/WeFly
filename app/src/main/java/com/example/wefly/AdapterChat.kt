@@ -20,8 +20,7 @@ class AdapterChat (private val newList : ArrayList<DataChat>) : RecyclerView.Ada
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = newList[position]
         holder.immagineProfilo.setImageResource(currentItem.immagineProfilo)
-        holder.nome.text = currentItem.nome
-        holder.cognome.text = currentItem.cognome
+        holder.titoloViaggio.text = currentItem.titoloViaggio
     }
 
     override fun getItemCount(): Int {
@@ -30,9 +29,8 @@ class AdapterChat (private val newList : ArrayList<DataChat>) : RecyclerView.Ada
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val immagineProfilo : ImageView = itemView.findViewById(R.id.foto_profilo)
-        val nome : TextView = itemView.findViewById(R.id.nome)
-        val cognome : TextView = itemView.findViewById(R.id.cognome)
+        val immagineProfilo : ImageView = itemView.findViewById(R.id.title_image)
+        val titoloViaggio : TextView = itemView.findViewById(R.id.titolo)
 
     }
 

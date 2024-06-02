@@ -13,11 +13,10 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/background_travel">
-
-
 
         <androidx.cardview.widget.CardView
             android:id = "@+id/cardView"
@@ -27,6 +26,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
+
+
 
             <ImageView
                 android:id="@+id/title_image"
@@ -44,16 +45,31 @@
                 android:alpha="0.2"/>
 
             <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/light_blue">
+
+                <TextView
+                    android:id="@+id/titolo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Titolo"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:layout_marginVertical="8dp"/>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="48dp"
                 android:layout_marginStart="16dp"
                 app:cardCornerRadius="8dp"
                 android:backgroundTint="@color/light_blue"
                 app:cardElevation="18dp">
 
                 <TextView
-                    android:id="@+id/titolo_viaggio"
+                    android:id="@+id/citta"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Maldive"
@@ -72,10 +88,10 @@
                 android:layout_marginTop="160dp">
 
                 <TextView
-                    android:id="@+id/data_label"
+                    android:id="@+id/partenza_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Data:"
+                    android:text="Partenza:"
                     android:textStyle="bold"
                     android:textSize="12dp"
                     android:textColor="@color/white"
@@ -83,7 +99,7 @@
                     app:layout_constraintTop_toTopOf="parent"/>
 
                 <TextView
-                    android:id="@+id/data"
+                    android:id="@+id/partenza"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="XXX"
@@ -91,23 +107,23 @@
                     android:textSize="12dp"
                     android:layout_marginStart="7dp"
                     android:textColor="@color/white"
-                    app:layout_constraintStart_toEndOf="@id/data_label"
+                    app:layout_constraintStart_toEndOf="@id/partenza_label"
                     app:layout_constraintTop_toTopOf="parent"/>
 
                 <TextView
-                    android:id="@+id/partecipanti_label"
+                    android:id="@+id/budget_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Partecipanti:"
+                    android:text="Budget (€):"
                     android:textStyle="bold"
                     android:textSize="12dp"
                     android:textColor="@color/white"
-                    app:layout_constraintEnd_toStartOf="@id/partecipanti"
+                    app:layout_constraintEnd_toStartOf="@id/budget"
                     app:layout_constraintTop_toTopOf="parent"
                     android:layout_marginEnd="5dp"/>
 
                 <TextView
-                    android:id="@+id/partecipanti"
+                    android:id="@+id/budget"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="XXX"

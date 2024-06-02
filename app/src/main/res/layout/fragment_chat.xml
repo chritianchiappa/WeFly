@@ -7,48 +7,15 @@
     android:background="@drawable/main_background"
     tools:context=".ChatFragment">
 
-    <RelativeLayout
-        android:id="@+id/header"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/blue">
+    <include layout="@layout/toolbar"/>
 
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_centerVertical="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="8dp"
-            android:src="@drawable/logo_png"
-            app:tint="@color/white" />
 
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Chat"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_centerInParent="true"/>
-
-        <ImageView
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="8dp"
-            android:src="@drawable/notifiche_icon"
-            app:tint="@color/white" />
-
-    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_below="@id/header">
+        android:layout_marginTop="64dp">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id = "@+id/recyclerViewChat"

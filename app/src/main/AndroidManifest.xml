@@ -13,14 +13,33 @@
         android:theme="@style/Theme.WeFly"
         tools:targetApi="31">
         <activity
-            android:name=".StartActivity"
+            android:name=".CompletaProfiloActivity"
             android:exported="false" />
+        <activity
+            android:name=".DettagliViaggiPassatiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DettagliViaggiAttualiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ViaggiPassatiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ViaggiAttualiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DettagliActivity"
+            android:exported="false"
+            android:theme="@style/Theme.WeFly" />
         <activity
             android:name=".SignUpActivity"
             android:exported="false" />
         <activity
             android:name=".SignInActivity"
             android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
         <activity
             android:name=".RegisterActivity"
             android:exported="true">
@@ -30,9 +49,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="true"/>
     </application>
 
 </manifest>

@@ -2,6 +2,7 @@ package com.example.wefly
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -24,25 +25,24 @@ class SignUpActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         auth = Firebase.auth
-3
-        binding.registratiBtn.setOnClickListener{
-            auth.createUserWithEmailAndPassword(binding.editTextEmail.text.toString(),binding.editTextPassword.text.toString())
-                .addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
-                        // Sign in success, update UI with the signed-in user's information
-                        val user = auth.currentUser
-                        startActivity(Intent(this, MainActivity::class.java))
-                    } else {
-                        // If sign in fails, display a message to the user.
 
-                        Toast.makeText(
-                            baseContext,
-                            "Authentication failed.",
-                            Toast.LENGTH_SHORT,
-                        ).show()
-                    }
-                }
+        binding.continuaBtn.setOnClickListener{
+            //send all the data to the next activity
+            val intent = Intent(this, CompletaProfiloActivity::class.java)
+            intent.putExtra("nome", binding.editTextNome.text.toString())
+            intent.putExtra("cognome", binding.editTextCognome.text.toString())
+            intent.putExtra("telefono", binding.editTextTelefono.text.toString())
+            intent.putExtra("email", binding.editTextEmail.text.toString())
+            intent.putExtra("password", binding.editTextPassword.text.toString())
 
+            startActivity(intent)
+        }
+
+        var goBackBtn = findViewById<ImageView>(R.id.go_back)
+        goBackBtn.setOnClickListener {
+            val intentGoBack = Intent(this, RegisterActivity::class.java)
+            intentGoBack.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intentGoBack)
         }
 
 

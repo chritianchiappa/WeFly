@@ -38,10 +38,11 @@
                 android:layout_marginHorizontal="20dp">
 
                 <ImageView
-                    android:id="@+id/foto_profilo"
+                    android:id="@+id/title_image"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/profile_icon"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/background_travel"
                     android:layout_gravity="center_vertical"/>
 
                 <LinearLayout
@@ -51,27 +52,16 @@
                     android:gravity="center_vertical">
 
                     <TextView
-                        android:id="@+id/nome"
+                        android:id="@+id/titolo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Nome"
+                        android:text="Titolo"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         />
 
-                    <View
-                        android:layout_width="20dp"
-                        android:layout_height="10dp"/>
 
-                    <TextView
-                        android:id="@+id/cognome"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Cognome"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
-                        android:textStyle="bold"/>
 
                 </LinearLayout>
 

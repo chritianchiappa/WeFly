@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 
 class AdapterViaggiPassati (private val newList : ArrayList<DataViaggiPassati>) : RecyclerView.Adapter<AdapterViaggiPassati.MyViewHolder>() {
 
+    var onItemClick: ((DataViaggiPassati) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.list_item_viaggi_passati,
             parent,false)
@@ -19,7 +21,13 @@ class AdapterViaggiPassati (private val newList : ArrayList<DataViaggiPassati>) 
         val currentItem = newList[position]
         holder.titoloImmagine.setImageResource(currentItem.titoloImmagine)
         holder.titoloViaggio.text = currentItem.titoloViaggio
-        holder.data.text = currentItem.data
+        holder.citta.text = currentItem.citta
+        holder.dataPartenza.text = currentItem.dataPartenza
+        holder.budget.text = currentItem.budget
+
+        holder.itemView.setOnClickListener {
+            onItemClick?.invoke(currentItem)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -29,8 +37,10 @@ class AdapterViaggiPassati (private val newList : ArrayList<DataViaggiPassati>) 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val titoloImmagine : ImageView = itemView.findViewById(R.id.title_image)
-        val titoloViaggio : TextView = itemView.findViewById(R.id.titolo_viaggio)
-        val data : TextView = itemView.findViewById(R.id.data)
+        val titoloViaggio : TextView = itemView.findViewById(R.id.titolo)
+        val citta : TextView = itemView.findViewById(R.id.citta)
+        val dataPartenza : TextView = itemView.findViewById(R.id.partenza)
+        val budget : TextView = itemView.findViewById(R.id.budget)
 
     }
 }

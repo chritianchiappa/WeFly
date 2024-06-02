@@ -1,140 +1,168 @@
 package com.example.wefly
 
+import android.app.Dialog
+import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.Matrix
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-
+import android.view.Window
+import android.widget.TextView
+import android.widget.Toast
+import com.google.android.material.button.MaterialButton
+import com.example.wefly.databinding.FragmentProfiloBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import androidx.exifinterface.media.ExifInterface
+import java.io.File
 
 class ProfiloFragment : Fragment() {
-    // dichiarazione variables per Viaggi attuali
 
-    private lateinit var adapterAttuali : AdapterViaggiAttuali // dichiarazione dell'adapter
-    private lateinit var recyclerViewAttuali : RecyclerView // dichiarazione della recyclerView
-    private lateinit var viaggiAttualiArrayList : ArrayList<DataViaggiAttuali> // ArrayList di objects
+    private lateinit var binding: FragmentProfiloBinding
+    private lateinit var auth: FirebaseAuth
+    private lateinit var databaseReference: DatabaseReference
+    private lateinit var storageReference: StorageReference
+    private lateinit var utente: DataUtenti
+    private lateinit var uid: String
 
-    lateinit var imageIdAttuali : Array<Int>
-    lateinit var titoloViaggioAttuali : Array<String>
-    lateinit var viaggiAttuali : Array<String>
-
-
-    // dichiarazione variables per Viaggi passati
-
-    private lateinit var adapterPassati : AdapterViaggiPassati // dichiarazione dell'adapter
-    private lateinit var recyclerViewPassati : RecyclerView // dichiarazione della recyclerView
-    private lateinit var viaggiPassatiArrayList : ArrayList<DataViaggiPassati> // ArrayList di objects
-
-    lateinit var imageIdPassati : Array<Int>
-    lateinit var titoloViaggioPassati : Array<String>
-    lateinit var dataPassati : Array<String>
-    lateinit var viaggiPassati : Array<String>
+    // variable for all the interests of the user
+    private lateinit var listaInteressi: Array<Boolean>
+    private lateinit var interessiString: ArrayList<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-
-        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profilo, container, false)
+        // Inflate the layout using the binding variable
+        binding = FragmentProfiloBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        dataInitializeAttuali()
-        dataInitializePassati()
-        val layoutManagerAttuali = LinearLayoutManager(context)
-        recyclerViewAttuali = view.findViewById(R.id.recyclerViewViaggiAttuali)
-        recyclerViewAttuali.layoutManager = layoutManagerAttuali
-        recyclerViewAttuali.setHasFixedSize(true)
-        adapterAttuali = AdapterViaggiAttuali(viaggiAttualiArrayList)
-        recyclerViewAttuali.adapter = adapterAttuali
 
+        auth = FirebaseAuth.getInstance()
+        uid = auth.currentUser?.uid.toString()
 
-        val layoutManagerPassati = LinearLayoutManager(context)
-        recyclerViewPassati = view.findViewById(R.id.recyclerViewViaggiPassati)
-        recyclerViewPassati.layoutManager = layoutManagerPassati
-        recyclerViewPassati.setHasFixedSize(true)
-        adapterPassati = AdapterViaggiPassati(viaggiPassatiArrayList)
-        recyclerViewPassati.adapter = adapterPassati
-    }
-
-    private fun dataInitializeAttuali(){
-
-        viaggiAttualiArrayList = arrayListOf<DataViaggiAttuali>()
-
-        imageIdAttuali = arrayOf(
-            R.drawable.background_travel,
-            R.drawable.background_travel,
-            R.drawable.background_travel
-        )
-
-        titoloViaggioAttuali = arrayOf (
-            "Londra",
-            "Londra",
-            "Londra"
-        )
-
-        viaggiAttuali = arrayOf(
-            "Viaggio 1",
-            "Viaggio 2",
-            "Viaggio 3"
-        )
-
-        for (i in imageIdAttuali.indices){
-
-            val viaggiAttuali = DataViaggiAttuali(imageIdAttuali[i], titoloViaggioAttuali[i])
-            viaggiAttualiArrayList.add(viaggiAttuali)
+        databaseReference = FirebaseDatabase.getInstance("https://wefly-d50f7-default-rtdb.europe-west1.firebasedatabase.app").getReference("Utenti")
+        if(uid.isNotEmpty()){
+            getUserData()
         }
 
-    }
+        //set the text for the tool bar
+        val title = view.findViewById<TextView>(R.id.toolbar_title)
+        title.text = "Profilo"
 
-    private fun dataInitializePassati(){
-
-        viaggiPassatiArrayList = arrayListOf<DataViaggiPassati>()
-
-        imageIdPassati = arrayOf(
-            R.drawable.background_travel,
-            R.drawable.background_travel,
-            R.drawable.background_travel,
-            R.drawable.background_travel
-        )
-
-        titoloViaggioPassati = arrayOf (
-            "Londra",
-            "Londra",
-            "Londra",
-            "Londra"
-        )
-
-        dataPassati = arrayOf(
-            "10/10/2020",
-            "10/10/2020",
-            "10/10/2020",
-            "10/10/2020"
-        )
-
-        viaggiPassati = arrayOf(
-            "Viaggio 1",
-            "Viaggio 2",
-            "Viaggio 3",
-            "Viaggio 4"
-        )
-
-        for (i in imageIdPassati.indices){
-
-            val viaggiPassati = DataViaggiPassati(imageIdPassati[i], titoloViaggioPassati[i], dataPassati[i])
-            viaggiPassatiArrayList.add(viaggiPassati)
+        val viaggiAttualiBtn = view.findViewById<MaterialButton>(R.id.viaggi_attuali_btn)
+        viaggiAttualiBtn.setOnClickListener {
+            val intentViaggiAttuali = Intent(context, ViaggiAttualiActivity::class.java)
+            startActivity(intentViaggiAttuali)
         }
 
+        val viaggiPassatiBtn = view.findViewById<MaterialButton>(R.id.viaggi_passati_btn)
+        viaggiPassatiBtn.setOnClickListener {
+            val intentViaggiPassati = Intent(context, ViaggiPassatiActivity::class.java)
+            startActivity(intentViaggiPassati)
+        }
     }
 
+    private fun getUserData(){
+
+        Toast.makeText(context, "Caricamento dati...", Toast.LENGTH_SHORT).show()
+        databaseReference.child(uid).addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                utente = snapshot.getValue(DataUtenti::class.java)!!
+                binding.nomeUtente.text = utente.nome
+                binding.cognomeUtente.text = utente.cognome
+                getInteressi()
+                getUserProfile()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(context, "Impossibile caricare dati", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    private fun getInteressi(){
+        var interessi = ""
+        interessiString = arrayListOf<String>()
+
+        listaInteressi = arrayOf(
+            utente.scelta1 ?: false,
+            utente.scelta2 ?: false,
+            utente.scelta3 ?: false,
+            utente.scelta4 ?: false,
+            utente.scelta5 ?: false,
+            utente.scelta6 ?: false,
+            utente.scelta7 ?: false,
+            utente.scelta8 ?: false,
+            utente.scelta9 ?: false,
+            utente.scelta10 ?: false
+        )
+
+        for (i in 0..9) {
+            if (listaInteressi[i]) {
+                // Get the resource ID dynamically
+                val resId = resources.getIdentifier("scelta${i+1}", "string", context?.packageName)
+
+                // Use getString() to get the actual string value
+                if (resId != 0) {
+                    val interesse = getString(resId)
+                    interessi += "$interesse"
+                    interessiString.add("$interesse")
+                }
+                if(i != 9){
+                    interessi += ", "
+                }
+            }
+        }
+
+        binding.interessiUtente.setText(interessi)
+    }
+
+    private fun getUserProfile(){
+        storageReference = FirebaseStorage.getInstance().reference.child("Utenti/$uid.jpg")
+        val localFile = File.createTempFile("tempimage","jpg")
+        storageReference.getFile(localFile).addOnSuccessListener {
+            val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
+            val rotatedBitmap = rotateImageIfRequired(bitmap, localFile.absolutePath)
+            binding.profilePicture.setImageBitmap(rotatedBitmap)
+        }.addOnFailureListener{
+            Toast.makeText(context, "Impossibile caricare l'immagine", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun rotateImageIfRequired(img: Bitmap, filePath: String): Bitmap {
+        val ei = ExifInterface(filePath)
+        val orientation = ei.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL)
+
+        return when (orientation) {
+            ExifInterface.ORIENTATION_ROTATE_90 -> rotateImage(img, 90)
+            ExifInterface.ORIENTATION_ROTATE_180 -> rotateImage(img, 180)
+            ExifInterface.ORIENTATION_ROTATE_270 -> rotateImage(img, 270)
+            else -> img
+        }
+    }
+
+    private fun rotateImage(img: Bitmap, degree: Int): Bitmap {
+        val matrix = Matrix()
+        matrix.postRotate(degree.toFloat())
+        return Bitmap.createBitmap(img, 0, 0, img.width, img.height, matrix, true)
+    }
 }

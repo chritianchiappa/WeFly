@@ -1,6 +1,6 @@
-
 package com.example.wefly
 
+import android.content.Context
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.activity.enableEdgeToEdge
@@ -15,9 +15,11 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+
+        // enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -34,7 +36,9 @@ class MainActivity : AppCompatActivity() {
         val navView:BottomNavigationView = binding.bottomNavigation
         navView.setupWithNavController(navController)
 
+
     }
 
-}
 
+
+}

@@ -2,6 +2,8 @@ package com.example.wefly
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -40,8 +42,14 @@ class SignInActivity : AppCompatActivity() {
                     ).show()
                 }
 
-                }
             }
+        }
+
+        var goBackBtn = findViewById<ImageView>(R.id.go_back)
+        goBackBtn.setOnClickListener {
+            val intentGoBack = Intent(this, RegisterActivity::class.java)
+            startActivity(intentGoBack)
+        }
 
     }
 
