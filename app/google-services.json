@@ -12,7 +12,20 @@
           "package_name": "com.example.wefly"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "705583664973-jcs3ltrokst5f3jvmm8h0fbrufks5um4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.wefly",
+            "certificate_hash": "284ce15e6d0d63e2680ce8244cbcf60075e5f8f0"
+          }
+        },
+        {
+          "client_id": "705583664973-d822chkos2tbpu7dr3bld34on247q796.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyC_vzsOhQT-FCv88toovYzw1qBQrdJQp5o"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "705583664973-d822chkos2tbpu7dr3bld34on247q796.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

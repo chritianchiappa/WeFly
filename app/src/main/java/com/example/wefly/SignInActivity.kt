@@ -33,6 +33,7 @@ class SignInActivity : AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     val user = auth.currentUser
                     startActivity(Intent(this, MainActivity::class.java))
+                    finish()
                 } else {
                     // If sign in fails, display a message to the user.
                     Toast.makeText(
